@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Faith — Robert James Williams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      color: #111;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+    }
+    .author-name {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #111;
+      margin-bottom: 0.6rem;
+      text-decoration: none;
+      display: block;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #111; }
+    nav a.active { color: #111; border-bottom: 1px solid #111; padding-bottom: 2px; }
+
+    /* ── CONTENT ── */
+    .faith-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1.25rem;
+    }
+
+    .faith-text {
+      font-size: clamp(0.875rem, 1.8vw, 1rem);
+      line-height: 1.85;
+      color: #444;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── MINISTRIES ── */
+    .ministries-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 3rem;
+    }
+
+    .ministries-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1.5rem;
+    }
+
+    .ministries-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .ministry-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      border: 1px solid #e8e8e8;
+      transition: border-color 0.25s, box-shadow 0.25s;
+    }
+
+    .ministry-item:hover {
+      border-color: #ccc;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .ministry-item img {
+      width: 100%;
+      max-height: 80px;
+      object-fit: contain;
+      display: block;
+      filter: grayscale(30%);
+      transition: filter 0.3s ease;
+    }
+
+    .ministry-item:hover img {
+      filter: grayscale(0%);
+    }
+
+    @media (max-width: 600px) {
+      .ministries-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #bbb;
+      border-top: 1px solid #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="author-name" href="index.html">Robert James Williams</a>
+    <nav>
+      <a href="about.html">About Me</a>
+      <a href="index.html">Theatre Experience</a>
+      <a href="faith.html" class="active">My Faith</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="faith-content">
+    <p class="section-label">My Faith</p>
+    <p class="faith-text">[ Your personal faith statement goes here. Share what your faith means to you, how it shapes your life and work, and what drives your passion for serving others. ]</p>
+  </div>
+
+  <div class="ministries-section">
+    <p class="ministries-title">Christian Ministries and Organizations I Have Attended or Been Involved In</p>
+    <div class="ministries-grid">
+      <div class="ministry-item"><img src="assets/images/ministries/ans.png" alt="ANS" /></div>
+      <div class="ministry-item"><img src="assets/images/ministries/awana.png" alt="Awana" /></div>
+      <div class="ministry-item"><img src="assets/images/ministries/cef.jpg" alt="Child Evangelism Fellowship" /></div>
+      <div class="ministry-item"><img src="assets/images/ministries/moddy.png" alt="Moody Bible Institute" /></div>
+      <div class="ministry-item"><img src="assets/images/ministries/pgm.png" alt="PGM" /></div>
+      <div class="ministry-item"><img src="assets/images/ministries/tl.png" alt="Toccoa Life" /></div>
+      <div class="ministry-item"><img src="assets/images/ministries/tm.png" alt="Teen Missions International" /></div>
+      <div class="ministry-item"><img src="assets/images/ministries/wobi.png" alt="Word of Life Bible Institute" /></div>
+    </div>
+  </div>
+
+  <footer>© Robert James Williams</footer>
+
+</body>
+</html>
