@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Résumé — Robert James Williams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #fff;
+      color: #111;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    header {
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid #e0e0e0;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 100;
+    }
+    .author-name {
+      font-family: 'Bodoni Moda', serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #111;
+      margin-bottom: 0.6rem;
+      text-decoration: none;
+      display: block;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #111; }
+    nav a.active { color: #111; border-bottom: 1px solid #111; padding-bottom: 2px; }
+
+    .resume-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .credits-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .credits-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .credits-table thead tr {
+      border-bottom: 1px solid #e8e8e8;
+    }
+
+    .credits-table th {
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #bbb;
+      font-weight: 400;
+      padding: 0 0 0.65rem;
+      text-align: left;
+    }
+
+    .credits-table th:last-child { text-align: right; }
+
+    .credits-table tbody tr {
+      border-bottom: 1px solid #f2f2f2;
+    }
+    .credits-table tbody tr:last-child { border-bottom: none; }
+
+    .credits-table td {
+      padding: 0.9rem 0;
+      font-size: clamp(0.8rem, 1.6vw, 0.88rem);
+      color: #555;
+      vertical-align: top;
+    }
+
+    .credits-table td.show-name {
+      font-family: 'Bodoni Moda', serif;
+      font-style: italic;
+      font-size: clamp(0.88rem, 1.8vw, 1rem);
+      color: #222;
+      width: 36%;
+      padding-right: 1.5rem;
+    }
+
+    .credits-table td.role {
+      width: 36%;
+      padding-right: 1.5rem;
+    }
+
+    .credits-table td.role span {
+      display: block;
+      line-height: 1.75;
+    }
+
+    .credits-table td.company {
+      color: #888;
+      width: 18%;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+
+    .credits-table td.year {
+      color: #bbb;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-align: right;
+      width: 10%;
+      white-space: nowrap;
+    }
+
+    /* note cell under show name */
+    .show-note {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-size: 0.7rem;
+      color: #bbb;
+      letter-spacing: 0.04em;
+      margin-top: 0.2rem;
+    }
+
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    @media (max-width: 560px) {
+      .lower-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .credits-table td.year,
+      .credits-table th:last-child { display: none; }
+    }
+
+    .subsection-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .subsection ul {
+      list-style: none;
+    }
+
+    .subsection ul li {
+      font-size: clamp(0.8rem, 1.6vw, 0.88rem);
+      color: #555;
+      padding: 0.45rem 0;
+      border-bottom: 1px solid #f5f5f5;
+      line-height: 1.5;
+    }
+
+    .subsection ul li:last-child { border-bottom: none; }
+
+    .training-school {
+      display: block;
+      color: #222;
+    }
+
+    .training-detail {
+      display: block;
+      font-size: 0.72rem;
+      color: #aaa;
+      margin-top: 0.1rem;
+      letter-spacing: 0.03em;
+    }
+
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #bbb;
+      border-top: 1px solid #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a class="author-name" href="index.html">Robert James Williams</a>
+    <nav>
+      <a href="about.html">About Me</a>
+      <a href="index.html">Theatre Experience</a>
+      <a href="faith.html">My Faith</a>
+      <a href="resume.html" class="active">Résumé</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="resume-wrap">
+
+    <div class="credits-section">
+      <p class="section-label">Theatre Credits</p>
+      <table class="credits-table">
+        <thead>
+          <tr>
+            <th>Production</th>
+            <th>Role</th>
+            <th>Company</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="show-name">Voyage of the Dawn Treader</td>
+            <td class="role">
+              <span>Set Designer</span>
+              <span>Set Construction</span>
+              <span>Set Choreography</span>
+            </td>
+            <td class="company">HCT</td>
+            <td class="year">2018–2024</td>
+          </tr>
+          <tr>
+            <td class="show-name">Pride and Prejudice</td>
+            <td class="role">
+              <span>Set Designer</span>
+              <span>Set Construction</span>
+            </td>
+            <td class="company">HCT</td>
+            <td class="year">2018–2024</td>
+          </tr>
+          <tr>
+            <td class="show-name">Prince Caspian</td>
+            <td class="role">
+              <span>Set Designer</span>
+              <span>Set Construction</span>
+            </td>
+            <td class="company">HCT</td>
+            <td class="year">2018–2024</td>
+          </tr>
+          <tr>
+            <td class="show-name">The Lion, the Witch and the Wardrobe</td>
+            <td class="role">
+              <span>Set Designer</span>
+              <span>Set Construction</span>
+            </td>
+            <td class="company">HCT</td>
+            <td class="year">2018–2024</td>
+          </tr>
+          <tr>
+            <td class="show-name">You're a Good Man, Charlie Brown</td>
+            <td class="role">
+              <span>Production Crew</span>
+            </td>
+            <td class="company">HCT</td>
+            <td class="year">2018–2024</td>
+          </tr>
+          <tr>
+            <td class="show-name">Oklahoma!</td>
+            <td class="role">
+              <span>Production Crew</span>
+            </td>
+            <td class="company">HCT</td>
+            <td class="year">2018–2024</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="lower-grid">
+
+      <div class="subsection">
+        <p class="subsection-title">Training</p>
+        <ul>
+          <li>
+            <span class="training-school">Word of Life Bible Institute</span>
+            <span class="training-detail">Schroon Lake, New York</span>
+          </li>
+          <li>
+            <span class="training-school">Moody Bible Institute</span>
+            <span class="training-detail">Chicago, Illinois</span>
+          </li>
+          <li>
+            <span class="training-school">Self-taught</span>
+            <span class="training-detail">Set design, construction &amp; scenic arts</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <p class="subsection-title">Special Skills</p>
+        <ul>
+          <li>Set design &amp; scenic construction</li>
+          <li>Set choreography &amp; staging</li>
+          <li>Carpentry &amp; prop building</li>
+          <li>3D design &amp; CAD (TopSolid, MODO)</li>
+          <li>Adobe Creative Suite</li>
+          <li>Scenic painting</li>
+          <li>Production management</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+
+  <footer>© Robert James Williams</footer>
+
+</body>
+</html>
