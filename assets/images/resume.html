@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Résumé — Robert James Williams</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --ink:       #111111;
+      --mid:       #555555;
+      --quiet:     #999999;
+      --whisper:   #cccccc;
+      --rule:      #e4e4e4;
+      --accent:    #1a3a5c;
+      --page:      #fafafa;
+      --serif:     'Cormorant Garamond', Georgia, serif;
+      --sans:      'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--page);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── STICKY HEADER ─────────────────────────────────────────── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--page);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.1rem 2rem 1rem;
+      text-align: center;
+    }
+
+    .name {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--quiet);
+      margin-bottom: 0.75rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      font-size: 0.62rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--quiet);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--ink); }
+    nav a.active { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
+
+    /* ── PAGE WRAP ──────────────────────────────────────────────── */
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem 5rem;
+    }
+
+    /* ── CONTACT BAR ────────────────────────────────────────────── */
+    .contact-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.8rem;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.75rem;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    .contact-bar a {
+      color: var(--mid);
+      text-decoration: none;
+    }
+    .contact-bar a:hover { color: var(--accent); }
+
+    /* ── SECTION LABEL ──────────────────────────────────────────── */
+    .section-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section { margin-bottom: 3.5rem; }
+
+    /* ── SUMMARY ────────────────────────────────────────────────── */
+    .summary p {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 760px;
+      line-height: 1.8;
+    }
+
+    /* ── EXPERIENCE ─────────────────────────────────────────────── */
+    .job { margin-bottom: 2rem; }
+
+    .job-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .job-company {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+
+    .job-dates {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--whisper);
+      white-space: nowrap;
+    }
+
+    .job-meta {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--quiet);
+      margin-bottom: 0.55rem;
+    }
+
+    .job ul {
+      list-style: none;
+      padding-left: 1.1rem;
+    }
+
+    .job ul li {
+      position: relative;
+      font-size: 0.82rem;
+      color: var(--mid);
+      padding: 0.22rem 0;
+      line-height: 1.6;
+    }
+
+    .job ul li::before {
+      content: "—";
+      position: absolute;
+      left: -1.1rem;
+      color: var(--whisper);
+    }
+
+    /* ── ACHIEVEMENTS ───────────────────────────────────────────── */
+    .achievements ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem 2.5rem;
+    }
+
+    .achievements ul li {
+      font-size: 0.82rem;
+      color: var(--mid);
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .achievements ul li::before {
+      content: "◆";
+      position: absolute;
+      left: 0;
+      font-size: 0.45rem;
+      color: var(--accent);
+      top: 0.35em;
+    }
+
+    /* ── THEATRE ────────────────────────────────────────────────── */
+    .theatre-note {
+      font-size: 0.75rem;
+      color: var(--quiet);
+      margin-bottom: 1.4rem;
+      font-style: italic;
+    }
+
+    .credits-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .credits-table thead tr {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .credits-table th {
+      font-size: 0.57rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--whisper);
+      font-weight: 500;
+      padding: 0 0 0.6rem;
+      text-align: left;
+    }
+
+    .credits-table th:last-child { text-align: right; }
+
+    .credits-table tbody tr {
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .credits-table tbody tr:last-child { border-bottom: none; }
+
+    .credits-table td {
+      padding: 0.85rem 0;
+      font-size: 0.82rem;
+      color: var(--mid);
+      vertical-align: top;
+    }
+
+    .credits-table td.show-name {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 0.98rem;
+      color: var(--ink);
+      width: 36%;
+      padding-right: 1.5rem;
+    }
+
+    .credits-table td.role {
+      width: 34%;
+      padding-right: 1.5rem;
+    }
+
+    .credits-table td.role span { display: block; line-height: 1.7; }
+
+    .credits-table td.company {
+      color: var(--quiet);
+      width: 18%;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .credits-table td.year {
+      color: var(--whisper);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-align: right;
+      width: 12%;
+      white-space: nowrap;
+    }
+
+    /* ── LOWER GRID (skills + training) ────────────────────────── */
+    .lower-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .sub-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--quiet);
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .subsection ul { list-style: none; }
+
+    .subsection ul li {
+      font-size: 0.78rem;
+      color: var(--mid);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid #f5f5f5;
+      line-height: 1.5;
+    }
+
+    .subsection ul li:last-child { border-bottom: none; }
+
+    .sub-group-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--quiet);
+      margin: 1rem 0 0.4rem;
+    }
+
+    .subsection ul li .school { display: block; color: var(--ink); }
+    .subsection ul li .detail {
+      display: block;
+      font-size: 0.68rem;
+      color: var(--whisper);
+      margin-top: 0.1rem;
+    }
+
+    .membership-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      border: 1px solid currentColor;
+      border-radius: 2px;
+      padding: 0.1rem 0.45rem;
+      margin: 0.2rem 0;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      padding: 2rem;
+      text-align: center;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--whisper);
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .lower-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .credits-table td.year,
+      .credits-table th:last-child { display: none; }
+      .job-head { flex-direction: column; }
+    }
+
+    @media (max-width: 500px) {
+      .wrap { padding: 2rem 1.2rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="name" href="#">Robert James Williams</a>
+  <p class="tagline">Product Development Executive &nbsp;·&nbsp; Set Designer &amp; Scenic Artist</p>
+  <nav>
+    <a href="about.html">About Me</a>
+    <a href="index.html">Theatre Experience</a>
+    <a href="faith.html">My Faith</a>
+    <a href="resume.html" class="active">Résumé</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- Contact -->
+  <div class="contact-bar">
+    <span>518 Carolina Drive, Toccoa, GA 30577</span>
+    <span>(706) 886-9795 Home</span>
+    <span>(706) 491-9050 Mobile</span>
+    <a href="mailto:robertjwilliams@mac.com">robertjwilliams@mac.com</a>
+  </div>
+
+  <!-- Summary -->
+  <section class="summary">
+    <p class="section-label">Professional Summary</p>
+    <p>Visionary Product Development Executive with 35+ years of expertise in luxury furniture, cabinetry, kitchen &amp; bath, and home décor. Proven record driving product lines from concept to market for premium brands and high-profile estate licensors including Biltmore Estate, Hearst Castle, and Monet Estate. Deep expertise in international sourcing, factory qualification across Asia, and industrial coatings development in collaboration with Sherwin-Williams and AkzoNobel. Equally effective as a solo creative principal and cross-functional team leader — combining executive business acumen with advanced technical fluency in 3D visualization, CAD, and rendering. Complementary background as a self-taught set designer and scenic artist, with six productions for Heritage Christian Theatre.</p>
+  </section>
+
+  <!-- Experience -->
+  <section>
+    <p class="section-label">Professional Experience</p>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">James Joyce &amp; Company</span>
+        <span class="job-dates">Jan 2025 – Present</span>
+      </div>
+      <div class="job-meta">Principal &nbsp;·&nbsp; Toccoa, GA</div>
+      <ul>
+        <li>Providing innovative, unique, proprietary designs for home furnishings, lighting, and home décor.</li>
+        <li>Recent engagements include developing a furniture collection for a nationally distributed high-end home furnishings brand and a luxury bath vanity line for a premium cabinetry company.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">Habersham Furniture</span>
+        <span class="job-dates">2022 – Jan 2025</span>
+      </div>
+      <div class="job-meta">Vice President, Design and Merchandising &nbsp;·&nbsp; Toccoa, GA</div>
+      <ul>
+        <li>Spearheaded the design of luxury furniture and cabinet products, managing product lines.</li>
+        <li>Developed and launched exclusive furniture collections for high-profile licensors.</li>
+        <li>Managed international sourcing and factory qualifications in Asia.</li>
+        <li>Pioneered market trends and developed new finishes and hardware.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">James Joyce &amp; Company</span>
+        <span class="job-dates">2017 – 2022</span>
+      </div>
+      <div class="job-meta">Principal &nbsp;·&nbsp; Toccoa, GA</div>
+      <ul>
+        <li>Freelance designer for luxury brands, offering original designs, CAD drawings, and 3D visualization.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">Ballard Designs</span>
+        <span class="job-dates">2016 – 2017</span>
+      </div>
+      <div class="job-meta">Senior Director, Product Design &nbsp;·&nbsp; Atlanta, GA</div>
+      <ul>
+        <li>Directed Product Design team in creating innovative product solutions from conception through to market launch.</li>
+        <li>Advised merchant teams and vendors on design optimization.</li>
+        <li>Conducted trend research and competitive analysis.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">Habersham Plantation</span>
+        <span class="job-dates">2002 – 2016</span>
+      </div>
+      <div class="job-meta">Vice President, Design &nbsp;·&nbsp; Toccoa, GA</div>
+      <ul>
+        <li>Spearheaded the design of luxury furniture and cabinet products, managing product lines from prototyping to market.</li>
+        <li>Developed and launched exclusive furniture collections for high-profile licensors.</li>
+        <li>Managed international sourcing and factory qualifications in Asia.</li>
+        <li>Pioneered market trends and developed new finishes and hardware.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">The Habersham Plantation Corporation</span>
+        <span class="job-dates">1996 – 2002</span>
+      </div>
+      <div class="job-meta">Furniture Designer &nbsp;·&nbsp; Toccoa, GA</div>
+      <ul>
+        <li>Drove product line vision, reflecting seasonal trends and innovations.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">RJW Furnishings</span>
+        <span class="job-dates">1992 – 1996</span>
+      </div>
+      <div class="job-meta">Owner / President &nbsp;·&nbsp; Metamora, MI</div>
+      <ul>
+        <li>Founded and managed a start-up focused on high-end furniture design and manufacturing.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">CLD Enterprises</span>
+        <span class="job-dates">1991 – 1992</span>
+      </div>
+      <div class="job-meta">Furniture Design &amp; Fabrication &nbsp;·&nbsp; Bloomfield, MI</div>
+      <ul>
+        <li>Custom design and installation for high-end clients.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-head">
+        <span class="job-company">Annoor Sanatorium</span>
+        <span class="job-dates">1988 – 1989</span>
+      </div>
+      <div class="job-meta">Cabinet Manufacturing &amp; Construction (Volunteer) &nbsp;·&nbsp; Mafraq, Jordan</div>
+      <ul>
+        <li>Volunteer work involving custom cabinetry for a medical facility.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Key Achievements -->
+  <section class="achievements">
+    <p class="section-label">Key Achievements</p>
+    <ul>
+      <li>Created a leading kitchen &amp; bath business unit in luxury design.</li>
+      <li>Designed over 1,000 products, many still in production globally.</li>
+      <li>Published designs in books and magazines.</li>
+    </ul>
+  </section>
+
+  <!-- Theatre Credits -->
+  <section>
+    <p class="section-label">Theatre Credits</p>
+    <p class="theatre-note">Set Designer, Builder &amp; Production Crew &nbsp;·&nbsp; Heritage Christian Theatre (HCT) &nbsp;·&nbsp; 2018–2024</p>
+    <table class="credits-table">
+      <thead>
+        <tr>
+          <th>Production</th>
+          <th>Role(s)</th>
+          <th>Company</th>
+          <th>Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="show-name">Voyage of the Dawn Treader</td>
+          <td class="role">
+            <span>Set Designer</span>
+            <span>Set Construction</span>
+            <span>Set Choreography</span>
+          </td>
+          <td class="company">HCT</td>
+          <td class="year">2018–2024</td>
+        </tr>
+        <tr>
+          <td class="show-name">Pride and Prejudice</td>
+          <td class="role">
+            <span>Set Designer</span>
+            <span>Set Construction</span>
+          </td>
+          <td class="company">HCT</td>
+          <td class="year">2018–2024</td>
+        </tr>
+        <tr>
+          <td class="show-name">Prince Caspian</td>
+          <td class="role">
+            <span>Set Designer</span>
+            <span>Set Construction</span>
+          </td>
+          <td class="company">HCT</td>
+          <td class="year">2018–2024</td>
+        </tr>
+        <tr>
+          <td class="show-name">The Lion, the Witch and the Wardrobe</td>
+          <td class="role">
+            <span>Set Designer</span>
+            <span>Set Construction</span>
+          </td>
+          <td class="company">HCT</td>
+          <td class="year">2018–2024</td>
+        </tr>
+        <tr>
+          <td class="show-name">You're a Good Man, Charlie Brown</td>
+          <td class="role">
+            <span>Production Crew</span>
+          </td>
+          <td class="company">HCT</td>
+          <td class="year">2018–2024</td>
+        </tr>
+        <tr>
+          <td class="show-name">Oklahoma!</td>
+          <td class="role">
+            <span>Production Crew</span>
+          </td>
+          <td class="company">HCT</td>
+          <td class="year">2018–2024</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Skills & Credentials -->
+  <section>
+    <p class="section-label">Credentials &amp; Skills</p>
+    <div class="lower-grid">
+
+      <div class="subsection">
+        <p class="sub-label">Memberships</p>
+        <ul>
+          <li><span class="membership-badge">ASFD</span><br>American Society of Furniture Designers</li>
+          <li><span class="membership-badge">ICA</span><br>Institute of Classical Architecture</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <p class="sub-label">Technical Software</p>
+        <ul>
+          <li>Missler: TopSolid Design</li>
+          <li>Blender</li>
+          <li>Epic – Unreal Engine</li>
+          <li>Luxology/The Foundry: MODO</li>
+          <li>Microsoft 365 – Business</li>
+          <li>Adobe Creative Suite<br><span class="detail">Photoshop · InDesign · Illustrator · After Effects</span></li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <p class="sub-label">Scenic Arts Skills</p>
+        <ul>
+          <li>Set design &amp; scenic construction</li>
+          <li>Set choreography &amp; staging</li>
+          <li>Carpentry &amp; prop building</li>
+          <li>3D design &amp; CAD (TopSolid, MODO)</li>
+          <li>Scenic painting</li>
+          <li>Production management</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Training -->
+  <section>
+    <p class="section-label">Education &amp; Training</p>
+    <div class="lower-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="subsection">
+        <ul>
+          <li>
+            <span class="school">Word of Life Bible Institute</span>
+            <span class="detail">Schroon Lake, New York</span>
+          </li>
+          <li>
+            <span class="school">Moody Bible Institute</span>
+            <span class="detail">Chicago, Illinois</span>
+          </li>
+          <li>
+            <span class="school">Self-taught</span>
+            <span class="detail">Set design, construction &amp; scenic arts</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>© Robert James Williams</footer>
+
+</body>
+</html>
